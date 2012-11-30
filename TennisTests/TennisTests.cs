@@ -6,8 +6,8 @@ namespace TennisTests
     public class TennisTests
     {
         public class CreaVariables {
-            protected IJugador p1 = new Jugador();
-            protected IJugador p2 = new Jugador();
+            protected IJugador player1 = new Jugador();
+            protected IJugador player2 = new Jugador();
             protected IJuego game;
         }
 
@@ -17,14 +17,14 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
+                game = new Juego(player1, player2);
             }
 
             [Test]
             public void P1_0_P2_0()
             {
-                Assert.AreEqual("0", p1.DamePuntuacion());
-                Assert.AreEqual("0", p2.DamePuntuacion());
+                Assert.AreEqual("0", player1.DamePuntuacion());
+                Assert.AreEqual("0", player2.DamePuntuacion());
             }
         }
 
@@ -34,15 +34,15 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player1.Puntua();
             }
 
             [Test]
             public void P1_15_P2_0()
             {
-                Assert.AreEqual("15", p1.DamePuntuacion());
-                Assert.AreEqual("0", p2.DamePuntuacion());
+                Assert.AreEqual("15", player1.DamePuntuacion());
+                Assert.AreEqual("0", player2.DamePuntuacion());
             }
         }
 
@@ -52,16 +52,16 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p1.Puntua();
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player1.Puntua();
+                player1.Puntua();
             }
 
             [Test]
             public void P1_30_P2_0()
             {
-                Assert.AreEqual("30", p1.DamePuntuacion());
-                Assert.AreEqual("0", p2.DamePuntuacion());
+                Assert.AreEqual("30", player1.DamePuntuacion());
+                Assert.AreEqual("0", player2.DamePuntuacion());
             }
         }
 
@@ -70,17 +70,17 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
             }
 
             [Test]
             public void P1_40_P2_0()
             {
-                Assert.AreEqual("40", p1.DamePuntuacion());
-                Assert.AreEqual("0", p2.DamePuntuacion());
+                Assert.AreEqual("40", player1.DamePuntuacion());
+                Assert.AreEqual("0", player2.DamePuntuacion());
             }
         }
 
@@ -89,17 +89,17 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
             }
 
             [Test]
             public void P1_Gana()
             {
-                Assert.AreEqual(p1, game.ObtieneGanador());
+                Assert.AreEqual(player1, game.ObtieneGanador());
             }
         }
 
@@ -108,17 +108,17 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
+                game = new Juego(player1, player2);
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
             }
 
             [Test]
             public void P2_Gana()
             {
-                Assert.AreEqual(p2, game.ObtieneGanador());
+                Assert.AreEqual(player2, game.ObtieneGanador());
             }
         }
 
@@ -127,20 +127,20 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
             }
 
             [Test]
             public void Iguales()
             {
-                Assert.AreEqual("IGUALES", p1.DamePuntuacion());
-                Assert.AreEqual("IGUALES", p2.DamePuntuacion());
+                Assert.AreEqual("IGUALES", player1.DamePuntuacion());
+                Assert.AreEqual("IGUALES", player2.DamePuntuacion());
             }
         }
 
@@ -149,21 +149,21 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
+                game = new Juego(player1, player2);
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
             }
 
             [Test]
             public void Ventaja()
             {
-                Assert.AreEqual("VENTAJA", p1.DamePuntuacion());
-                Assert.AreEqual("IGUALES", p2.DamePuntuacion());
+                Assert.AreEqual("VENTAJA", player1.DamePuntuacion());
+                Assert.AreEqual("IGUALES", player2.DamePuntuacion());
             }
         }
 
@@ -172,21 +172,21 @@ namespace TennisTests
             [SetUp]
             public void Setup()
             {
-                game = new Juego(p1, p2);
-                p1.Puntua();
-                p1.Puntua();
-                p1.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
-                p2.Puntua();
+                game = new Juego(player1, player2);
+                player1.Puntua();
+                player1.Puntua();
+                player1.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
+                player2.Puntua();
             }
 
             [Test]
             public void Gana_Tras_Ventaja()
             {
-                Assert.AreEqual(p2, game.ObtieneGanador());
+                Assert.AreEqual(player2, game.ObtieneGanador());
             }
         }
     }
